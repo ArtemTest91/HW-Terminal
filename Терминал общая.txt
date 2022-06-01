@@ -206,22 +206,22 @@ grep -w "sec" *
 grep -wi "sec" *
 
 27. Найти строки в файлах где есть комбинация букв “second” в текущей папке
-grep -n second *.*
+grep -w second *.*
 
 28. Найти строки в файлах где есть комбинация букв “second” в любом регистре в текущей папке
 grep -i "second" *
 
 29. Найти строки в файлах где есть комбинация букв “second” во всех папках ниже уровнем
-grep -r "second" ./*/
+grep -r second
 
 30. Найти только путь и название файла в строках которых есть комбинация букв “second” в текущей папке
-grep -l second *.*
+grep -l second *.*  или grep -l -d skip "second" ./*
 
 31. Найти все строки во всех файлах где нет комбинации “second”
-grep -v "second" *
+grep -rhv "second" *  
 
 32. Найти только название и путь к файлам где нет комбинации “second”
-grep -vrl 'second' * | xargs find  $pwd
+grep -rL 'second' * | xargs find $pwd
 
 33. Вывести в терминал 4 последних строк любого текстового файла
 tail -4 tf_2.txt
@@ -230,7 +230,7 @@ tail -4 tf_2.txt
 head -4 tf_2.txt
 
 35. Команда в одну строку. Создать папку и создать текстовый файл с содержиммым.
-mkdir papka1 | echo 'hello' >> qa.txt, если файл в папке то mkdir papka; cd papka; echo "hello" >> qa.txt или mkdir test ; echo 'содержимое' > test/test.txt
+mkdir papka1 | echo 'hello' >> qa.txt, если файл нужен в папке то mkdir papka; cd papka; echo "hello" >> qa.txt или mkdir test ; echo 'содержимое' > test/test.txt
 
 36. Команда в одну строку. Переместить в любую одну папку текстовые файлы у которых в содержимом есть слово “sec”
 grep -rl 'sec' | xargs mv -t papka1
